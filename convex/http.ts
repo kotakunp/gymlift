@@ -66,4 +66,4 @@ http.route({
   }),
 });
 
-export default httpRouter;
+export default http;
