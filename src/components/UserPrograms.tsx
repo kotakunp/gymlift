@@ -16,7 +16,7 @@ import {
   AppleIcon,
   ShieldIcon,
 } from "lucide-react";
-import { USER_PROGRAMS } from "../app/constants/index";
+import { USER_PROGRAMS } from "@/constants/index";
 
 const UserPrograms = () => {
   return (
