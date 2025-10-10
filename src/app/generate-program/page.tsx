@@ -20,6 +20,26 @@ const GenerateProgramPage = () => {
   const messageContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const originalError = console.error;
+    console.error = function (msg, ...args) {
+      if (
+        msg &&
+        (msg.includes("Meeting has ended") ||
+          (args[0] && args[0].toString().includes("Meeting has ended")))
+      ) {
+        console.log("Ignoring known error: Meeting has ended");
+        return;
+      }
+
+      return originalError.call(console, msg, ...args);
+    };
+
+    return () => {
+      console.error = originalError;
+    };
+  }, []);
+
+  useEffect(() => {
     if (messageContainerRef.current) {
       messageContainerRef.current.scrollTop =
         messageContainerRef.current.scrollHeight;
