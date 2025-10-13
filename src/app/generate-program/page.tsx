@@ -111,6 +111,8 @@ const GenerateProgramPage = () => {
         setMessages([]);
         setCallEnded(false);
 
+        await navigator.mediaDevices.getUserMedia({ audio: true });
+
         const fullName = user?.firstName
           ? `${user.firstName} ${user.lastName || ""}`.trim()
           : "There";
@@ -129,11 +131,11 @@ const GenerateProgramPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen text-foreground overflow-hidden pt-24 pb-6">
-      <div className="container mx-auto h-full px-4 max-w-5xl">
+      <div className="container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold font-mono">
-            <span>Generate your</span>
-            <span className="text-primary uppercase">Fitness program</span>
+            <span>Generate Your </span>
+            <span className="text-primary uppercase">Fitness Program</span>
           </h1>
           <p className="text-muted-foreground mt-2">
             Have a voice conversation with our AI assistant to create your
